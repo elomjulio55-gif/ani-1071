@@ -1,0 +1,2 @@
+# Explications
+Apres suppression du fichier .cpp et apres relancement de son executable, on observe que le resultat apparait sans soucis. Cela nous permet nous comprendre que l'executable est un programme autonome disposant d'une sorte de photocopie du fichier .cpp. A cet effet livrer un programme n'oublige pas a livrer son code car l'executable suffit pour utiliser le logiciel.
