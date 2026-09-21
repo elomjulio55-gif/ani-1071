@@ -1,0 +1,4 @@
+# Nombre de lignes
+apres l'execution de la commande et sa redirection vers sortie.txt (clang++ -E bonjour.cpp > sortie.txt) on compte 2033 lignes de codes.
+# Comparaison et explication
+on remarque que le nombre de ligne du code source (6 lignes) et largement inferieur par rapport au nombre de ligne obtenu apres l'execution de la commande(2033 lignes). Cet ecart est particulierement du au role de la commande car sachant qu'elle s'arrete a l'etape 1 puis affiche le resultat on comprend alors qu'il s'agit de l'etape consistant a collecte tout les elements ou fichiers en un seul bloc.Ce qui justifie sa grande taille.

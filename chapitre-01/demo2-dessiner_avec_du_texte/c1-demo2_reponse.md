@@ -1,11 +1,12 @@
-#include <cstdio>
-int main(){
-    printf("####################\n");
-    printf("#                  #\n");
-    printf("#                  #\n");
-    printf("#                  #\n");
-    printf("#                  #\n");
-    printf("#                  #\n");
-    printf("####################\n");
-   retun 0;
-}
+# Resultat
+```
+####################
+#                  #
+#                  #
+#                  #
+#                  #
+#                  #
+####################
+```
+# Nombre de lignes 
+Mon code initial compte au total exactement 10 lignes.
