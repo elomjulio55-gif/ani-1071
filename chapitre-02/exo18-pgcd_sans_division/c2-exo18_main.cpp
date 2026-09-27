@@ -13,7 +13,6 @@ int main(){
     int tours = 0;
 
     // Methode 1 : soustractions successives
-    int tours1 = 0;
     while(a != b){
         if(a > b){
             a = a-b;
@@ -22,7 +21,7 @@ int main(){
         }
         tours++;
     }
-    std::cout <<"Par la methode de soustraction, le PGCD("<<a_initial<<","<< b_initial<<")"<<"est egale a"<< a <<"Ce resultat a ete trouve apres"<< tours<<"tours."<<std::endl;
+    std::cout <<"Par la methode de soustraction, le PGCD ( "<< a_initial << "," << b_initial<< ")" << "est egale a" << a << "Ce resultat a ete trouve apres" << tours << "tours." << std::endl;
     // Methode 2 : Divisions successives
     a = a_initial;
     b = b_initial;
@@ -34,6 +33,6 @@ while (b != 0){
     b = reste;
     tours++;
 }
-std::cout <<"Par la methode de soustraction, le PGCD("<<a_initial<<","<< b_initial<<")"<<"est egale a"<< a <<"Ce resultat a ete trouve apres"<< tours<<"tours."<<std::endl;
+std::cout <<"Par la methode de divisions, le PGCD(" << a_initial << "," << b_initial << ")" << "est egale a" << a << "Ce resultat a ete trouve apres" << tours << "tours." << std::endl;
 
 return 0;}
