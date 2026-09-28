@@ -10,7 +10,7 @@ int main(){
         std::cin>>n;
     }
     int nbre_transformations = 0;//nombre d'etapes ou de tranformation avant d'atteindre 1
-    std::cout<<n;//Pour un affiche sexy
+    std::cout<<n;//Pour un affichage sexy de la suite
     while (n != 1){
         if(n % 2 ==0){
             n = n/2;
