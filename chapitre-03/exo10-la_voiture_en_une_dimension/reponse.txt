@@ -1,0 +1,8 @@
+MES SIX RELEVES
+pour un depart arrete avec une acceleration de 2, la vitesse augmente de 2 a chaque seconde(0, 2, 4, 6, 8, 10). La position quant a elle vaut le carre du temps t(0, 1, 4, 9, 16, 25).
+
+POURQUOI POAITION N'APPELLE PAS VITESSE:
+La position n'appelle pas vitesse car la vitesse change pendant tout le trajet.
+
+CE QU'UNE FONCTION PURE ME GARANTIT:
+Une fonction pure donne toujours le meme resultat pour les memes arguments et elle ne modifie rien en dehors d'elle meme. A cet effet je peux l'appeler dans l'ordre que je veux et autant de fois que je veux.
