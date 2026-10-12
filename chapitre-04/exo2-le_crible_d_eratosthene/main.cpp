@@ -13,14 +13,18 @@ void cribler(bool premier[], int n){
 }
 int main (){
     int n; static bool premier[100001];
+
     std::cin >> n;
+
     if(n<2){
         std::cout << "AUCUN\n";
         return 0;
     }
+
     cribler(premier, n);
+
     for (int i = 2; i <= n; i++){
-        if(premier[1]){
+        if(premier[i]){
             std::cout << i << "\n";
         }
     }
