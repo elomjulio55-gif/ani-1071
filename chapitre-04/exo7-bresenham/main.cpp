@@ -9,7 +9,7 @@ void tracerSegment(int x0, int y0, int x1, int y1){
     int erreur = dx + dy;
 
     while(true){
-        std::cout << x0 << "" << y0 << "\n";
+        std::cout << x0 << " " << y0 << "\n";
         if (x0 == x1 && y0 == y1){
             break;
         }
