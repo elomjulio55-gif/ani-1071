@@ -20,9 +20,9 @@ int main(){
     for(int y = 0; y < colonnes; y++){
         for(int x = 0; x < lignes; x++){
             if (x > 0){
-                std::cout << "";
+                std::cout << " ";
             }
-            std::cout << destination [y * lignes + x];
+            std::cout << destination[y * lignes + x];
         }
         std::cout << "\n";
     }
