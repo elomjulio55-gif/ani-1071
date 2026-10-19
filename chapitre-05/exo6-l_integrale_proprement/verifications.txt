@@ -1,0 +1,11 @@
+Integrale, Derivee, Zero : Integrale : sin entre 0 et 3.14159 = 1.999998 ; carre entre 0 et 1 = 0.332834
+Derivee : sin en 0 = 1.0000000000
+Zero : racine de x*x-2 entre 1 et 2 = 1.414213562373 ; sqrt(2) = 1.414213562373 ; ecart = 2.220e-
+
+Arrêt : 
+Ma règle d'arrêt : je fais exactement 100 tours de boucle, pas un de plus. Je n'ai pas voulu attendre que f(m) soit egal à 0, parce qu'avec les nombres a virgule ça tombe presque jamais pile sur 0 et la boucle pourrait tourner sans jamais s'arreter.
+Avec 100 tours, elle s'arrête forcement. A chaque tour je coupe l'intervalle en deux, donc au bout de 100 tours il est minuscule. L'écart avec sqrt(2) est de 2.220e-16, c'est comme une petite erreur d'arrondi de l'ordinateur.
+
+Sans pointeur :
+Si integrale.cpp choisissait la fonction avec un numéro, il faudrait la rouvrir pour ajouter un nouveau cas pour un nouveau numéro pour la 4e fonction, puis la recompiler. Pareil pour derivee et zero si elles marchaient aussi avec un numéro.
+Maintenant avec le pointeur, on écrit juste la nouvelle fonction et on passe son nom, donc on n'a pas besoin a integrale.

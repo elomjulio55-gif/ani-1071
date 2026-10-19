@@ -1,0 +1,19 @@
+PS C:\Users\Utilisateur\ani-1071\chapitre-05\exo2-les_deux_echanger> ./programme
+deplier :
+i =0 largeur = 40 -> x=2136997112 y=0
+i =39 largeur = 40 -> x=2136997112 y=0
+i =40 largeur = 40 -> x=2136997112 y=1
+i =85 largeur = 40 -> x=2136997112 y=2
+
+minMax :
+t={12, 7, 19, 3, 15} n=5 -> min=3
+t={-5, -2, -9} n=3 -> min=-9
+
+diviser :
+a=17 b=5 -> rendu=1 quotient=3 reste
+a=100 b=7 -> rendu=1 quotient=14 reste
+
+Par zero :
+avant : quotient=-999 reste=-999
+valeur rendue : 0(0 = false)
+apres : quotient=-999 reste=-999

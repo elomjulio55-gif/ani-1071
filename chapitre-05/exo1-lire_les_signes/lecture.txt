@@ -1,0 +1,18 @@
+Prédictions :
+5 9
+9 9
+9 1
+
+Obtenu :
+PS C:\Users\Utilisateur\ani-1071\chapitre-05\exo1-lire_les_signes> ./programme
+5 9
+9 9
+9 1
+
+Écarts :
+aucun
+
+p = q :
+L'instruction p = q change la destination de p : au debut, p pointait vers a, après, p pointe vers b, donc p et q pointent tous les deux vers b. 
+Elle ne rien(change aucune valeur) : a et b gardent les nombres qu'ils avaient (9 et 9) au moment de l'instruction. 
+Elle ne change pas non plus q. C'est l'instruction d'apres, *p = 1, qui modifie une valeur : comme p pointe maintenant vers b, c'est b qui devient 1, et a reste à 9.
