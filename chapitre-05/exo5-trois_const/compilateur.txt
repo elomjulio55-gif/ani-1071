@@ -1,0 +1,16 @@
+a :
+*a = 5;  ->  troisconst.cpp:10:8: error: assignment of read-only location '* a'
+a = &y;  ->  acceptee
+
+b :
+*b = 5;  ->  acceptee
+b = &y;  ->  troisconst.cpp:14:7: error: assignment of read-only variable 'b'
+
+c :
+*c = 5;  ->  troisconst.cpp:16:8: error: assignment of read-only location '*(const int*)c'
+c = &y;  ->  troisconst.cpp:17:7: error: assignment of read-only variable 'c'
+
+Regle :
+const avant l'étoile : c'est la variable designee qui est constante. On ne peut pas ecrire a travers le pointeur, mais le pointeur peut changer de cible.
+const apres l'étoile : c'est le pointeur lui-meme qui est constant. Il ne peut pas changer de cible, mais on peut ecrire dans la variable.
+Avec les deux (c) : les deux sont bloques.
