@@ -1,0 +1,13 @@
+Sortie :
+PS C:\Users\Utilisateur\ani-1071\chapitre-05\exo4-le_tableau_par_pointeur> ./programme
+somme = 56
+maximum = 19
+inverser : 1 2 3 4 5 -> 5 4 3 2 1 
+longueur("bonjour") = 7 ; strlen = 7
+longueur("Yaound├⌐") = 8 ; strlen = 8
+
+Yaoundé :
+longueur rend 8. Pourtant il y a 7 lettres. Le é prend 2 cases (2 octets) dans une chaîne, et longueur compte les cases, pas les lettres. strlen rend 8 aussi.
+
+Pourquoi pas const :
+inverser change les valeurs du tableau : elle échange des cases. Avec const int*, on n'a pas le droit d'écrire à travers le pointeur, donc *debut = *fin serait refusé par le compilateur.
