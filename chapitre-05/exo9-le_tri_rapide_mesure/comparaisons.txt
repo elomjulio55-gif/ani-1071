@@ -1,0 +1,13 @@
+Aléatoire :
+100 : tri rapide = 633 ; selection = 4950
+1000 : tri rapide = 10870 ; selection = 499500
+10000 : tri rapide = 158165 ; sélection = 49995000
+100000 : tri rapide = 1980765 ; selection = 4999950000
+
+Déjà trie : 49995000
+
+Pourquoi :
+Le pivot est la plus grande case. Toutes les autres sont plus petites, donc elles vont toutes a gauche et il n'y a rien à droite. À chaque fois je ne place qu'une seule case, alors je compare n(n-1)/2 fois, comme la sélection.
+
+Mon pivot :
+Je prends la case du milieu comme pivot. Compte sur le tableau déjà trie : 113631.
