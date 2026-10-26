@@ -19,7 +19,7 @@ void bougerRef(Vec2& p)
 
 double longueurRef(const Vec2& p)
 {
-    p.x = 0;
+    //p.x = 0;
     return std::sqrt(p.x * p.x + p.y * p.y);
 }
 

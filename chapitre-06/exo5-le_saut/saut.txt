@@ -1,0 +1,10 @@
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo5-le_saut> ./saut
+v0 : 7.672027
+formule v0 * v0 / (2 * g) : 3.000000
+1/120 : 2.968077
+1/30 : 2.873487
+Mon pas : 1/1000 2.996164
+
+L'écart vient :
+De la simulation, pas de la formule. La formule est juste : v0 * v0 / (2 * g) donne exactement 3.000000 m. Mais la simulation avance par petits pas, et à chaque pas elle utilise la vitesse de la fin du pas, qui est un peu plus petite que celle du début quand le personnage monte : elle compte donc un peu moins de hauteur que la vraie.
+Preuve par les mesures : l'écart avec 3 m est de 0.126513 pour le pas 1/30, de 0.031923 pour 1/120 et de 0.003836 pour 1/1000. Quand le pas est 4 fois plus petit (1/30 puis 1/120), l'écart est environ 4 fois plus petit, et il tend vers 0. Si la formule était fausse, l'écart resterait le même quel que soit le pas.
