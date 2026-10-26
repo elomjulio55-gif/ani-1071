@@ -1,0 +1,12 @@
+Attendu :
+10 secondes divisées par un pas de 1/120 seconde : 10 x 120 = 1200 appels à mettreAJour
+
+Attentes courtes :
+attente max 1 ms, tours 13208, appels 1199
+
+Attentes longues :
+attente max 50 ms, tours 263, appels 1198
+
+Pourquoi :
+Les appels ne suivent pas les tours, car mettreAJour dépend du temps réel qui passe et pas du nombre de tours. À chaque tour, l'accumulateur reçoit le temps écoulé, et on lance autant de mises à jour que de PAS entiers qu'il contient. Mes attentes sont tirées entre la moitié du max et le max. Avec des attentes courtes, un tour dure bien moins qu'un PAS, donc la plupart des tours ne lancent aucune mise à jour (13208 tours pour 1199 appels). Avec des attentes longues, un tour dure 3 à 6 PAS, donc chaque tour rattrape plusieurs mises à jour d'un coup (263 tours pour 1198 appels). Dans les deux cas, il passe 10 secondes, donc environ 1200 appels.
+L'écart restant avec 1200 (1 de moins, puis 2 de moins) vient de la fin. Le reste de temps plus petit qu'un PAS reste dans l'accumulateur et n'est jamais utilisé. Et la dernière attente a lieu après la dernière mesure du temps : la boucle s'arrête avant de la transformer en appels, alors que la montre la compte (la durée réelle a été de 10.001 s, puis de 10.032 s).
