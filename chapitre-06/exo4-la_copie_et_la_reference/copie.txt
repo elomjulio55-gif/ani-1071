@@ -1,0 +1,26 @@
+Prévu :
+depart : x = 2, y = 4
+apres bougerCopie : x = 2, y = 4
+apres bougerRef : x = 3, y = 4
+apres longueurRef : x = 3, y = 4
+
+Obtenu :
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo4-la_copie_et_la_reference> g++ -std=c++17 -Wall -Wextra copie.cpp -o copie
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo4-la_copie_et_la_reference> ./copie
+apres bougerCopie : x = 2, y = 4
+apres bougerRef : x = 3, y = 4
+apres longueurRef : x = 3, y = 4
+longueurRef rend 5
+
+Message :
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo4-la_copie_et_la_reference> g++ -std=c++17 -Wall -Wextra copie.cpp -o copie
+copie.cpp: In function 'double longueurRef(const Vec2&)':
+copie.cpp:22:9: error: assignment of member 'Vec2::x' in read-only object
+   22 |     p.x = 0;
+      |     ~~~~^~~
+
+Pourquoi :
+bougerCopie(Vec2 p) reçoit une copie de ma variable. Elle change la copie, pas ma variable, donc x reste 2.
+bougerRef(Vec2& p) reçoit ma variable elle-même, sous un autre nom. Quand elle ajoute 1 à p.x, c'est ma variable qui change : x passe de 2 à 3.
+longueurRef(const Vec2& p) reçoit ma variable elle-même, sans copie, mais en lecture seule. Elle peut lire x et y et rendre la longueur (5), mais le compilateur refuse p.x = 0, donc x reste 3.
+const sert à une fonction qui ne fait que lire : elle ne copie pas la structure (utile si elle est grosse), et on est sûr, sans ouvrir la fonction, qu'elle ne change pas ma variable.
