@@ -1,0 +1,40 @@
+-00:
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo1-le_chronometre> g++ -std=c++17 -Wall -Wextra -O0 chrono.cpp -o chrono0
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo1-le_chronometre> ./chrono0
+total = 500000500000
+boucle : 0.002794000 s
+ligne courte
+ligne courte
+ligne courte
+ligne courte
+ligne courte
+printf 2 : 0.000467200 s
+printf 3 : 0.000490000 s
+printf 4 : 0.000857000 s
+printf 5 : 0.000527900 s
+
+-02:
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo1-le_chronometre> g++ -std=c++17 -Wall -Wextra -O2 chrono.cpp -o chrono2
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo1-le_chronometre> ./chrono2                                             
+total = 500000500000
+boucle : 0.000000100 s
+ligne courte
+ligne courte
+ligne courte
+ligne courte
+ligne courte
+printf 2 : 0.000391600 s
+printf 3 : 0.000395800 s
+printf 4 : 0.000373500 s
+printf 5 : 0.000411100 s
+
+-Un printf:
+0.000467200 s
+0.000490000 s
+0.000857000 s
+0.000527900 s
+
+Le programme ecrivait dans la fenetre d'un terminal
+
+-Le plus chers:
+La boucle en -O0 coute le plus : environ 0.0028 s, alors qu'un printf coute moins d'une microseconde. En -O2 la boucle ne prend presque plus rien.
