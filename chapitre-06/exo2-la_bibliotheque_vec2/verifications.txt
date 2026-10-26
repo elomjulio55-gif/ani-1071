@@ -1,0 +1,37 @@
+Voici ce qui c'est passe pour avoir les resultats qui vont suivre:
+
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo2-la_bibliotheque_vec2> g++ -std=c++17 vec2.cpp -o vec2
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo2-la_bibliotheque_vec2> ./vec2
+length({3, 4}) = 5
+dot({1, 0}, {0, 1}) = 0
+rotate({1, 0}, radians(90)) = {6.123233995736766e-17, 1}
+proche de {0, 1} a epsilon pres : oui
+reflect({1, -1}, {0, 1}) = {1, 1}
+add({1, 2}, {3, 4}) = {4, 6}
+sub({5, 7}, {2, 3}) = {3, 4}
+scale({1.5, -2}, 2) = {3, -4}
+normalize({3, 4}) = {0.6, 0.8}
+normalize({0, 0}) = {0, 0}
+lerp({0, 0}, {10, 20}, 0.25) = {2.5, 5}
+perp({2, 5}) = {-5, 2}
+
+Les quatre :
+length({3, 4}) affiche 5
+dot({1, 0}, {0, 1}) affiche 0
+rotate({1, 0}, radians(90)) affiche {6.123233995736766e-17, 1}, proche de {0, 1}
+reflect({1, -1}, {0, 1}) affiche {1, 1}
+
+Mes essais :
+add({1, 2}, {3, 4}) affiche {4, 6}
+sub({5, 7}, {2, 3}) affiche {3, 4}
+scale({1.5, -2}, 2) affiche {3, -4}
+normalize({3, 4}) affiche {0.6, 0.8}
+normalize({0, 0}) affiche {0, 0}
+lerp({0, 0}, {10, 20}, 0.25) affiche {2.5, 5}
+perp({2, 5}) affiche {-5, 2}
+
+Epsilon :
+Les deux membres de rotate({1, 0}, radians(90)) sont x = 6.123233995736766e-17 et y = 1.
+J'ai choisi epsilon = 1e-9.
+Pourquoi : x devrait valoir 0, mais il vaut un tout petit nombre, car pi est arrondi et sin et cos aussi. Cet ecart est bien plus petit que 1e-9. Une vraie erreur serait bien plus grande. Donc je compare avec epsilon et pas avec ==.
+J'ai ecrit pi avec 21 chiffres, mais un double n'en garde que 16 ou 17.
