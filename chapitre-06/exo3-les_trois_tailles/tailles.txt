@@ -1,0 +1,29 @@
+Voici ou j'ai pris les resultats qui vont suivre:
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo3-les_trois_tailles> g++ -std=c++17 tailles.cpp -o tailles 
+PS C:\Users\Utilisateur\ani-1071\chapitre-06\exo3-les_trois_tailles> ./tailles
+Vec2 16 16
+Particule 40 40
+A 5 8
+B 10 24
+C 10 16
+ParticuleEtat 41 48
+position, vitesse, vie, etat 48
+etat, vie, position, vitesse 48
+position, etat, vitesse, vie 48
+
+Mesures :
+Vec2 16 16
+Particule 40 40
+A 5 8
+B 10 24
+C 10 16
+ParticuleEtat 41 48
+
+Ordres essayes :
+vie, etat, position, vitesse 48
+position, vitesse, vie, etat 48
+etat, vie, position, vitesse 48
+position, etat, vitesse, vie 48
+
+Regle :
+Un membre est place sur un octet multiple de sa taille, donc le compilateur met des octets vides avant lui si besoin : A fait 8 (3 vides avant n), B fait 24 (7 vides avant d et 7 vides après e), alors que Vec2 et Particule n'ont aucun vide (16 et 40). La taille totale est arrondie au multiple du plus gros membre, pour que chaque case d'un tableau soit bien placee : C fait 16 (6 vides à la fin, donc mettre les gros d'abord gagne 8 octets sur B) et la Particule avec etat fait 48 dans tous les ordres, car 41 octets utiles arrondis à un multiple de 8 donnent 48, donc aucun ordre ne peut gagner d'octet.
