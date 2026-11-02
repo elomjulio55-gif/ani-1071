@@ -1,0 +1,25 @@
+Boucle :
+total = 44999999950000000
+Duree de la boucle au premier lancement: 0.314446900 s
+Duree de la boucle au deuxieme lancement: 0.317120800 s
+Duree de la boucle au troisieme lancement: 0.315998400 s
+
+Le plus court :
+court 1 : 0.000000400 s
+court 3 : 0.000000100 s
+court 4 : 0.000000100 s
+court 5 : 0.000000000 s
+Le Chrono ne voit pas d'ecart plus petit qu'environ 0.000000010 s (100 nanosecondes). C'est le temps qu'il faut juste pour lire l'horloge deux fois.
+
+Message :
+PS C:\Users\Utilisateur\ani-1071\chapitre-07\exo2-le_chronometre_objet> g++ -std=c++17 -Wall -Wextra -O0 chrono.cpp -o chrono
+chrono.cpp: In function 'int main()':
+chrono.cpp:50:18: error: passing 'const Chrono' as 'this' argument discards qualifiers [-fpermissive]
+   50 |      k.redemarrer();
+      |      ~~~~~~~~~~~~^~
+chrono.cpp:20:10: note:   in call to 'void Chrono::redemarrer()'
+   20 |     void redemarrer()
+      |          ^~~~~~~~~~
+
+Pourquoi :
+ecoule est const : elle promet de ne rien changer, elle fait seulement lire debut. Donc elle marche sur un objet const. redemarrer change debut et n'est pas const, donc le compilateur la refuse sur k, qui est const.

@@ -1,0 +1,14 @@
+Messages :
+PS C:\Users\Utilisateur\ani-1071\chapitre-07\exo5-la_pile_fermee> ./pile
+Taille de la pile apres 150 empilements : 100
+Taille de la pile apres 200 depilements : 0
+Taille de la file apres 150 enfilements : 100
+Taille de la file apres 200 defilements : 0
+
+Invariant de la file :
+
+La valeur de nombre reste toujours comprise entre 0 et 100. Les indices tete et queue restent toujours compris entre 0 et 99. La relation queue = (tete + nombre) % 100 est toujours respectee. Lorsque la file est vide, tete et queue sont egaux. Lorsqu'elle est pleine, ils sont egalement egaux. La file peut donc avoir queue inferieur a tete, car elle est circulaire.
+
+Struct :
+
+Avec struct Pile et private:, le compilateur refuse p.nombre = -5; car le membre reste prive. Sans private:, le compilateur accepte cette instruction car les membres d'un struct sont publics par defaut. Avec class Pile, les membres sont prives par defaut, tandis qu'avec struct Pile, ils sont publics par defaut. On conclut que struct et class permettent tous deux d'utiliser private:, mais que leur visibilite par defaut est differente.

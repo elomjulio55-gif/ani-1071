@@ -1,0 +1,64 @@
+Messages :
+PS C:\Users\Utilisateur\ani-1071\chapitre-07\exo3-le_constructeur_qui_disparait> g++ -std=c++17 -Wall -Wextra defaut.cpp -o defaut
+defaut.cpp: In function 'int main()':
+defaut.cpp:13:7: error: no matching function for call to 'P::P()'
+   13 |     P x;
+      |       ^
+  • there are 3 candidates
+    • candidate 1: 'P::P(int)'
+      defaut.cpp:6:5:
+          6 |     P(int v) : a(v) {}
+            |     ^
+      • candidate expects 1 argument, 0 provided
+    • candidate 2: 'constexpr P::P(const P&)'
+      defaut.cpp:3:8:
+          3 | struct P
+            |        ^
+      • candidate expects 1 argument, 0 provided
+    • candidate 3: 'constexpr P::P(P&&)'
+      • candidate expects 1 argument, 0 provided
+defaut.cpp:14:11: error: no matching function for call to 'P::P()'
+   14 |     P t[10];
+      |           ^
+  • there are 3 candidates
+    • candidate 1: 'P::P(int)'
+      defaut.cpp:6:5:
+          6 |     P(int v) : a(v) {}
+            |     ^
+      • candidate expects 1 argument, 0 provided
+    • candidate 2: 'constexpr P::P(const P&)'
+      defaut.cpp:3:8:
+          3 | struct P
+            |        ^
+      • candidate expects 1 argument, 0 provided
+    • candidate 3: 'constexpr P::P(P&&)'
+      • candidate expects 1 argument, 0 provided
+defaut.cpp:14:7: warning: unused variable 't' [-Wunused-variable]
+   14 |     P t[10];
+      |       ^
+
+
+Avec a(0) :
+PS C:\Users\Utilisateur\ani-1071\chapitre-07\exo3-le_constructeur_qui_disparait> ./defaut
+x.a = 0
+
+Avec = default :
+Le compilateur dit : 
+defaut.cpp: In function 'int main()':
+defaut.cpp:14:7: warning: unused variable 't' [-Wunused-variable]
+   14 |     P t[10];
+      |       ^
+defaut.cpp:15:16: warning: 'x.P::a' is used uninitialized [-Wuninitialized]
+   15 |     std::printf("x.a = %d\n", x.a);
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+defaut.cpp:13:7: note: 'x' declared here
+   13 |     P x;
+      |       ^
+      
+lancement 1 : x.a = 0
+lancement 2 : x.a = 0
+lancement 3 : x.a = 0
+
+Pourquoi :
+Des qu'on ecrit un constructeur (ici P(int v)), le compilateur ne fabrique plus celui sans parametre. Or P x; et P t[10]; en ont besoin, donc les deux lignes etaient refusees.
+Avec = default, le constructeur existe de nouveau, mais il ne met rien dans a. Donc x.a n'est pas initialise : sa valeur est au hasard, ce qui traine dans la memoire. Mes trois 0 ne prouvent rien : cette case de memoire valait peut-etre deja 0.

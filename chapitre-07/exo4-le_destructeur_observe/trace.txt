@@ -1,0 +1,52 @@
+Prévu :
+m nait
+fonction nait
+fin de la fonction
+fonction meurt
+bloc nait
+fin du bloc
+bloc meurt
+new_sans_delete nait
+new_avec_delete nait
+new_avec_delete meurt
+double_1 nait
+double_2 nait
+fin du bloc double
+double_2 meurt
+double_1 meurt
+fin de main
+m meurt
+
+Sortie :
+PS C:\Users\Utilisateur\ani-1071\chapitre-07\exo4-le_destructeur_observe> ./trace
+m nait
+fonction nait
+fin de la fonction
+fonction meurt
+bloc nait
+fin du bloc
+bloc meurt
+new_sans_delete nait
+new_avec_delete nait
+new_avec_delete meurt
+double_1 nait
+double_2 nait
+fin du bloc double
+double_2 meurt
+double_1 meurt
+fin de main
+m meurt
+m meurt
+
+Explication :
+m : nait au debut de main, meurt a la toute fin de main, car c'est une variable locale de main.
+fonction : nait quand f est appelee, meurt a la fin de f, avant le retour dans main.
+bloc : nait dans le bloc, meurt a l'accolade fermante du bloc.
+new_sans_delete : nait au new, ne meurt jamais. new la met sur le tas et personne ne fait delete, donc son destructeur n'est jamais appele (fuite).
+new_avec_delete : nait au new, meurt au delete.
+double_1 : nait en premier, meurt en dernier, a la fin du bloc.
+double_2 : nait apres double_1, meurt avant lui. Elles meurent dans l'ordre inverse de leur naissance.
+
+Appel à la main :
+On lit "m meurt" deux fois : une fois a la main, et une fois toute seule a la fin de main. C'est une faute, car le destructeur est deja appele automatiquement : l'objet est detruit deux fois.
+Si Trace possedait de la memoire (new dans le constructeur, delete[] dans le destructeur), elle serait rendue deux fois (double delete) et le programme pourrait planter.

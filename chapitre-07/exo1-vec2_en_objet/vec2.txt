@@ -1,0 +1,77 @@
+Essais :
+
+PS C:\Users\Utilisateur\ani-1071\chapitre-07\exo1-vec2_en_objet> ./programme
+Vec2() = (0, 0)
+Vec2(3, 4) = a = (3, 4)
+Vec2(1, 2) = b = (1, 2)
+a.length() = 5
+a.dot(b) = 11
+a.normalized() = (0.6, 0.8)
+n = a; n.normalize(); n = (0.6, 0.8)
+a (inchang├⌐) = (3, 4)
+Vec2().normalize() = (0, 0)
+a + b = (4, 6)
+a - b = (2, 2)
+-a = (-3, -4)
+a / 2.0 = (1.5, 2)
+a * 2.0 = (6, 8)
+2.0 * a = (6, 8)
+a == b : non
+a == Vec2(3, 4) : oui
+a != b : oui
+c = a; c += b; c = (4, 6)
+c -= b; c = (3, 4)
+c *= 2.0; c = (6, 8)
+d = a; (d += b) += b; d = (5, 8)
+a[0] = 3, a[1] = 4
+c[1] = 5.0; c = (6, 5)
+
+Chute :
+pas 1 : t = 0.1  p = (0.3000, 9.9019)  v = (3.0000, -0.9810)
+pas 2 : t = 0.2  p = (0.6000, 9.7057)  v = (3.0000, -1.9620)
+pas 3 : t = 0.3  p = (0.9000, 9.4114)  v = (3.0000, -2.9430)
+pas 4 : t = 0.4  p = (1.2000, 9.0190)  v = (3.0000, -3.9240)
+pas 5 : t = 0.5  p = (1.5000, 8.5285)  v = (3.0000, -4.9050)
+pas 6 : t = 0.6  p = (1.8000, 7.9399)  v = (3.0000, -5.8860)
+pas 7 : t = 0.7  p = (2.1000, 7.2532)  v = (3.0000, -6.8670)
+pas 8 : t = 0.8  p = (2.4000, 6.4684)  v = (3.0000, -7.8480)
+pas 9 : t = 0.9  p = (2.7000, 5.5855)  v = (3.0000, -8.8290)
+pas 10 : t = 1.0  p = (3.0000, 4.6045)  v = (3.0000, -9.8100)
+pas 11 : t = 1.1  p = (3.3000, 3.5254)  v = (3.0000, -10.7910)
+pas 12 : t = 1.2  p = (3.6000, 2.3482)  v = (3.0000, -11.7720)
+pas 13 : t = 1.3  p = (3.9000, 1.0729)  v = (3.0000, -12.7530)
+pas 14 : t = 1.4  p = (4.2000, -0.3005)  v = (3.0000, -13.7340)
+
+Sol :
+instant de la formule : 1.4278 s
+premier pas avec p.y < 0 : 14 (t = 1.4 s)
+
+
+Le pas 14 montre seulement que la balle passe sous le sol entre t = 1.3 et t = 1.4, pas l'instant exact du contact. Il arrive aussi avant la formule (1.4 contre 1.4278) : la simulation tombe un peu trop vite, car v change avant p.
+
+Messages :
+refus.cpp: In function 'int main()':
+refus.cpp:24:7: error: no match for 'operator+=' (operand types are 'Vec2' and 'Vec2')
+   24 |     a += b;
+      |     ~~^~~~
+refus.cpp:25:18: error: no match for 'operator*' (operand types are 'double' and 'Vec2')
+   25 |     Vec2 c = 2.0 * a;
+      |              ~~~ ^ ~
+      |              |     |
+      |              |     Vec2
+      |              double
+  • there is 1 candidate
+    refus.cpp:25:18:
+       25 |     Vec2 c = 2.0 * a;
+          |              ~~~~^~~
+    • candidate 1: 'Vec2 operator*(const Vec2&, double)'
+      refus.cpp:16:6:
+         16 | Vec2 operator*(const Vec2& a, double k)
+            |      ^~~~~~~~
+      • no known conversion for argument 1 from 'double' to 'const Vec2&'
+        refus.cpp:16:28:
+           16 | Vec2 operator*(const Vec2& a, double k)
+              |                ~~~~~~~~~~~~^
+refus.cpp:25:10: warning: unused variable 'c' [-Wunused-variable]
+   25 |     Vec2 c = 2.0 * a;
+      |          ^
