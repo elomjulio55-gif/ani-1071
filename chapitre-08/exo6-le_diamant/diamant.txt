@@ -1,0 +1,40 @@
+Message :
+PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo6-le_diamant> g++ -std=c++17 -Wall -Wextra diamant.cpp -o diamant
+diamant.cpp: In function 'int main()':
+diamant.cpp:60:8: error: request for member 'position' is ambiguous
+   60 |      a.position.x = 3.0;
+      |        ^~~~~~~~
+  • there are 2 candidates
+    • candidate 1: 'Vec2 simple::Entite::position'
+      diamant.cpp:12:10:
+         12 |     Vec2 position = Vec2{0.0, 0.0};
+            |          ^~~~~~~~
+    • candidate 2: 'Vec2 simple::Entite::position'
+
+Tailles :
+PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo6-le_diamant> ./diamant
+sans virtual :
+sizeof(Entite) = 16
+sizeof(Mobile) = 32
+sizeof(Visible) = 24
+sizeof(Ennemi) = 56
+Mobile& : position.x = 3.0
+Visible& : position.x = 0.0
+
+avec virtual :
+sizeof(Entite) = 16
+sizeof(Mobile) = 40
+sizeof(Visible) = 32
+sizeof(Ennemi) = 56
+Mobile& : position.x = 3.0
+Visible& : position.x = 3.0
+
+REMARQUE: Sans virtual, Ennemi (56) = Mobile (position 16 + vitesse 16) + Visible (position 16 + glyphe 1) + 7 de bourrage. Il y a deux positions.
+Avec virtual, Ennemi (56) = pointeur cache de Mobile 8 + vitesse 16 + pointeur cache de Visible 8 + glyphe 1 + 7 de bourrage + une seule position 16.
+Meme taille, mais pas le meme contenu : on gagne une position (16) et on perd deux pointeurs caches (16).
+Avec virtual, il n'y a qu'une position, partagee : les deux references voient la meme.
+
+Pourquoi jamais :
+Sans virtual, Ennemi a deux positions : e.position est ambigu et les deux copies peuvent se contredire.
+Avec virtual, il n'y a qu'une position, mais chaque parent cache un pointeur en plus, et chaque acces doit d'abord retrouver ou est la position.
+Je prefere la composition : un Ennemi possede un Mobile et un Visible, au lieu d'heriter des deux.
