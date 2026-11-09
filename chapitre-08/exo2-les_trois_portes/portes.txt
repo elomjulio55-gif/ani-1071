@@ -1,0 +1,57 @@
+Tableau :
+Derivee, publique : compile
+Derivee, protegee : compile
+Derivee, privee : refuse
+main, publique : compile
+main, protegee : refuse
+main, privee : refuse
+
+Messages :
+
+PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo2-les_trois_portes> g++ -std=c++17 -Wall -Wextra portes.cpp -o portes
+portes.cpp: In member function 'void Derivee::afficher() const':
+portes.cpp:23:48: error: 'int Base::privee' is private within this context
+   23 |         std::printf("derivee : privee = %d\n", privee);
+      |                                                ^~~~~~
+portes.cpp:13:9: note: declared private here
+   13 |     int privee;
+      |         ^~~~~~
+
+
+PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo2-les_trois_portes> g++ -std=c++17 -Wall -Wextra portes.cpp -o portes
+portes.cpp: In function 'int main()':
+portes.cpp:37:46: error: 'int Base::protegee' is protected within this context
+   37 |      std::printf("main : protegee = %d\n", d.protegee);
+      |                                              ^~~~~~~~
+portes.cpp:10:9: note: declared protected here
+   10 |     int protegee;
+      |         ^~~~~~~~
+
+
+      PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo2-les_trois_portes> g++ -std=c++17 -Wall -Wextra portes.cpp -o portes
+portes.cpp: In function 'int main()':
+portes.cpp:38:44: error: 'int Base::privee' is private within this context
+   38 |      std::printf("main : privee = %d\n", d.privee);
+      |                                            ^~~~~~
+portes.cpp:13:9: note: declared private here
+   13 |     int privee;
+      |         ^~~~~~
+
+      
+
+Fonction libre :
+
+PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo2-les_trois_portes> g++ -std=c++17 -Wall -Wextra portes.cpp -o portes
+portes.cpp: In function 'void soigner(Base&)':
+portes.cpp:29:8: error: 'int Base::protegee' is protected within this context
+   29 |      b.protegee = 1;
+      |        ^~~~~~~~
+portes.cpp:10:9: note: declared protected here
+   10 |     int protegee;
+      |         ^~~~~~~~
+soigner est refusee. protected ouvre la porte seulement a la classe et a ses enfants. soigner est une fonction libre : elle ne fait pas partie de la famille. Recevoir un Base& en parametre ne lui donne pas ce droit.
+
+De facon tres simple si on essaie de voir ca comme des portes alors :
+public:la porte est ouverte, tout le monde peut entrer
+protected: la porte est ouvertes seulement a la famile(la classe et les enfants)
+private: la porte est fermee, seule la classe elle meme a la cle. Meme ses enfants n'ont pas acces

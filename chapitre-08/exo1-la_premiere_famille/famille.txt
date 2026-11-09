@@ -1,0 +1,26 @@
+Tailles :
+PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo1-la_premiere_famille> ./famille
+sizeof(Vec2) = 16
+sizeof(const char*) = 8
+sizeof(Entite) = 24
+sizeof(Ennemi) = 32
+sizeof(Joueur) = 32
+
+Écarts :
+Vec2 : 16 octets = 2 double de 8 octets.
+const char* : 8 octets, c'est une adresse.
+Entite : 24 octets = Vec2 (16) + const char* (8). Pas de bourrage.
+Ennemi : 32 octets = Entite (24) + int degats (4) + 4 octets de bourrage, pour finir sur un multiple de 8.
+Joueur : 32 octets = Entite (24) + double vie (8). Pas de bourrage.
+Ennemi et Joueur ont la meme taille : un int (4) avec son bourrage (4) coute autant qu'un double (8).
+
+Message :
+PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo1-la_premiere_famille> g++ -std=c++17 -Wall -Wextra famille.cpp -o famille
+famille.cpp: In function 'int main()':
+famille.cpp:46:8: error: 'Vec2 Entite::position' is protected within this context
+   46 |      e.position = Vec2{3.0, 4.0};
+      |        ^~~~~~~~
+famille.cpp:14:10: note: declared protected here
+   14 |     Vec2 position;
+      |          ^~~~~~~~
+position est protected : seules la classe Entite et ses enfants peuvent y toucher. main n'est ni l'un ni l'autre, donc c'est refuse. deplacer est une methode d'Ennemi, qui herite d'Entite, donc elle a le droit.

@@ -1,0 +1,38 @@
+Transition :
+PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo10-l_angle_qui_prend_le_chemin_court> ./angle
+de 350 vers 10 :
+t = 0.0 : lerp = 350.0  lerpAngle = 350.0
+t = 0.1 : lerp = 316.0  lerpAngle = 352.0
+t = 0.2 : lerp = 282.0  lerpAngle = 354.0
+t = 0.3 : lerp = 248.0  lerpAngle = 356.0
+t = 0.4 : lerp = 214.0  lerpAngle = 358.0
+t = 0.5 : lerp = 180.0  lerpAngle = 0.0
+t = 0.6 : lerp = 146.0  lerpAngle = 2.0
+t = 0.7 : lerp = 112.0  lerpAngle = 4.0
+t = 0.8 : lerp = 78.0  lerpAngle = 6.0
+t = 0.9 : lerp = 44.0  lerpAngle = 8.0
+t = 1.0 : lerp = 10.0  lerpAngle = 10.0
+
+lerp part de 350 et descend jusqu'a 10 en passant par 180 : il parcourt 340 degres, dans le mauvais sens. lerpAngle passe par 0 : il parcourt seulement 20 degres.
+
+Caméra :
+pas 4 : cap = 356.0  lerp = 348.9  lerpAngle = 348.9
+pas 5 : cap = 0.0  lerp = 244.2  lerpAngle = 352.2
+pas 6 : cap = 4.0  lerp = 172.2  lerpAngle = 355.8
+pas 7 : cap = 8.0  lerp = 122.9  lerpAngle = 359.4
+Au pas 5, le cap passe de 356 a 0. La camera lerp saute de 348.9 a 244.2, puis 172.2 : elle repart en arriere et refait presque un tour pour rattraper le cap. Le joueur voit la camera tourner tres vite dans le mauvais sens. La camera lerpAngle continue doucement (352.2, 355.8, 359.4, 3.2).
+
+Demi-tour :
+de 0 vers 180 :
+t = 0.0 : lerp = 0.0  lerpAngle = 0.0
+t = 0.1 : lerp = 18.0  lerpAngle = 18.0
+t = 0.2 : lerp = 36.0  lerpAngle = 36.0
+t = 0.3 : lerp = 54.0  lerpAngle = 54.0
+t = 0.4 : lerp = 72.0  lerpAngle = 72.0
+t = 0.5 : lerp = 90.0  lerpAngle = 90.0
+t = 0.6 : lerp = 108.0  lerpAngle = 108.0
+t = 0.7 : lerp = 126.0  lerpAngle = 126.0
+t = 0.8 : lerp = 144.0  lerpAngle = 144.0
+t = 0.9 : lerp = 162.0  lerpAngle = 162.0
+t = 1.0 : lerp = 180.0  lerpAngle = 180.0
+Les deux donnent les memes valeurs. La difference vaut exactement 180 degres, elle n'est pas plus grande, donc lerpAngle ne corrige rien. A 180 il n'y a pas de chemin plus court : les deux sens font 180 degres. Le choix est arbitraire et peut changer avec un tout petit arrondi.

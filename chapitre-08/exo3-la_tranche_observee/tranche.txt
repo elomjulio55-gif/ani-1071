@@ -1,0 +1,11 @@
+Sorties :
+PS C:\Users\Utilisateur\ani-1071\chapitre-08\exo3-la_tranche_observee> ./tranche
+f (valeur) : entite
+g (reference) : ennemi
+h (pointeur) : ennemi
+sizeof(Entite) = 8
+sizeof(Ennemi) = 16
+
+Pourquoi :
+f recoit une copie. Cette copie est un vrai Entite : seule la partie Entite de l'Ennemi a ete gardee, le reste est coupe (tranche). Elle a perdu degats (8 octets de difference : 16 contre 8) et le fait d'etre un Ennemi, donc son nom() est celui d'Entite.
+g et h recoivent l'objet lui-meme (sa reference ou son adresse), rien n'est coupe, donc nom() trouve le vrai type Ennemi.
